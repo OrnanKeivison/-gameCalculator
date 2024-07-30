@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golfe</title>
+
+    <style>
+        *{
+            font-family: 'Trebuchet MS';
+        }
+        body{
+        background-color: #50956e;}
+        header{
+            padding: 40px 40px 10px 40px;
+        }
+        img{
+            width: 80px;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1, h2{
+            font-family: 'Trebuchet MS';
+            text-align: center;
+            color: white;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #d4ec8d;
+        }
+        td{
+            background-color: #9fbf8d;
+        }
+        input[type="number"], input[type="text"] {
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+            background: transparent;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .add{
+            border: solid 1px rgb(234, 228, 110);
+            border-radius: 20px;
+            color: black;
+            background-color: white;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .add:hover{
+            background-color: rgb(234, 228, 110);
+            color: white;
+            transform: scale(1.2)
+        }
+        .update{
+            border: solid 1px rgb(234, 228, 110);
+            border-radius: 10px;
+            color: black;
+            background-color: white;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .update:hover{
+            background-color: rgb(234, 228, 110);
+            color: white;
+            transform: scale(1.2)
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        #listaPodio{
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div><img src="./golfe.png" alt="cards img"></div>
+            <div><h1>GOLFE</h1></div>
+        </div>
+      
+    </header>
+
+    <table id="tabelaGolfe">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Round 1</th>
+                <th>Round 2</th>
+                <th>Round 3</th>
+                <th>Round 4</th>
+                <th>Round 5</th>
+                <th>Round 6</th>
+                <th>Round 7</th>
+                <th>Round 8</th>
+                <th>Round 9</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="nomeJogador"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td class="somaTotal">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <button class="add" onclick="adicionarLinha()">Add player</button>
+        <button class="update" onclick="calcularPodio()">Update podium</button>
+    </div>
+    <div id="podio" style="text-align: center;">
+        <h2>GAME PLACEMENT</h2>
+        <table id="listaPodio"></table>
+    </div>
+
+    <script>
+        function atualizarSoma(input) {
+            const row = input.closest('tr');
+            const inputs = row.querySelectorAll('.rodada');
+            let soma = 0;
+
+            inputs.forEach(input => {
+                soma += parseFloat(input.value) || 0;
+            });
+
+            row.querySelector('.somaTotal').textContent = soma;
+        }
+
+        function adicionarLinha() {
+            const tabela = document.getElementById('tabelaGolfe').getElementsByTagName('tbody')[0];
+            const novaLinha = tabela.insertRow();
+
+            novaLinha.innerHTML = `
+                <td><input type="text" class="nomeJogador"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td class="somaTotal">0</td>
+            `;
+        }
+
+        function calcularPodio() {
+            const tabela = document.getElementById('tabelaGolfe').getElementsByTagName('tbody')[0];
+            const linhas = tabela.getElementsByTagName('tr');
+            const jogadores = [];
+
+            for (let i = 0; i < linhas.length; i++) {
+                const nome = linhas[i].querySelector('.nomeJogador').value;
+                const soma = parseFloat(linhas[i].querySelector('.somaTotal').textContent) || 0;
+                jogadores.push({ nome, soma });
+            }
+
+            // Ordenar os jogadores com pontuações negativas primeiro
+            jogadores.sort((a, b) => a.soma - b.soma);
+
+            const listaPodio = document.getElementById('listaPodio');
+            listaPodio.innerHTML = '';
+
+            jogadores.forEach((jogador, index) => {
+                const item = document.createElement('tr');
+                item.textContent = `${index + 1}º Place: ${jogador.nome} ${jogador.soma} points`;
+                listaPodio.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>

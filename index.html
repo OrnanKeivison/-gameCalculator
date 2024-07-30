@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        *{
+            font-family: 'Trebuchet MS';
+        }
+        body{
+            background-color: rgb(237, 189, 117);
+        }
+        h1{
+            font-size: 70px;
+            color: white;
+        }
+        header{
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img{
+            width: 80px;
+        }
+        .button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .phaseten{
+            font-size: 50px;
+            border: solid 1px rgb(231, 156, 43);
+            border-radius: 20px;
+            color: black;
+            background-color: white;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .phaseten:hover{
+            background-color: rgb(231, 156, 43);
+            color: white;
+            transform: scale(1.2)
+        }
+        .golfe{
+            font-size: 50px;
+            border: solid 1px rgb(231, 156, 43);
+            border-radius: 10px;
+            color: black;
+            background-color: white;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .golfe:hover{
+            background-color: rgb(231, 156, 43);
+            color: white;
+            transform: scale(1.2)
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./calc.png" alt="calc">
+        <h1>GAME CALCULATOR</h1>
+    </header>
+    <main>
+        <div class="button">
+            <div><button class="golfe"><a href="./golfe.html">GOLFE</a></button></div>
+            <div><button class="phaseten"><a href="./golfe.html">PHASE 10</a></button></div>
+        </div>
+    </main>
+</body>
+</html>
