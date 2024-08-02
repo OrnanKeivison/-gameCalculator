@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golfe</title>
-
     <style>
         * {
             font-family: 'Trebuchet MS';
@@ -45,7 +44,7 @@
         td {
             background-color: #9fbf8d;
         }
-        input[type="number"], input[type="text"] {
+        input[type="text"] {
             border: none;
             outline: none;
             padding: 0;
@@ -95,7 +94,7 @@
     <header>
         <div class="logo">
             <div><img src="./golfe.png" alt="cards img"></div>
-            <div><h1>GOLF</h1></div>
+            <div><h1>GOLFE</h1></div>
         </div>
     </header>
 
@@ -118,15 +117,15 @@
         <tbody>
             <tr>
                 <td><input type="text" class="nomeJogador"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\.[0-9]+)?"></td>
                 <td class="somaTotal">0</td>
             </tr>
         </tbody>
@@ -147,7 +146,10 @@
             let soma = 0;
 
             inputs.forEach(input => {
-                soma += parseFloat(input.value) || 0;
+                const valor = parseFloat(input.value);
+                if (!isNaN(valor)) {
+                    soma += valor;
+                }
             });
 
             row.querySelector('.somaTotal').textContent = soma;
@@ -159,15 +161,15 @@
 
             novaLinha.innerHTML = `
                 <td><input type="text" class="nomeJogador"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
-                <td><input type="number" class="rodada" onchange="atualizarSoma(this)"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
+                <td><input type="text" class="rodada" onchange="atualizarSoma(this)" pattern="-?[0-9]*(\\.[0-9]+)?"></td>
                 <td class="somaTotal">0</td>
             `;
         }
